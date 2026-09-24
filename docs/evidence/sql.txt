@@ -1,0 +1,12 @@
+-- Agregação no SQL: alternativa ao agrupamento com Collections para grandes volumes.
+SELECT c.id,c.name,c.channel,c.cost,
+ COUNT(l.id) AS leads,
+ SUM(CASE WHEN l.status='CONVERTED' THEN 1 ELSE 0 END) AS conversions,
+ COALESCE(SUM(l.revenue),0) AS revenue,
+ CASE WHEN COUNT(l.id)=0 THEN 0 ELSE ROUND(100.0*SUM(CASE WHEN l.status='CONVERTED' THEN 1 ELSE 0 END)/COUNT(l.id),2) END AS conversion_rate_percent,
+ ROUND(c.cost/NULLIF(COUNT(l.id),0),2) AS cost_per_lead,
+ ROUND(100.0*(COALESCE(SUM(l.revenue),0)-c.cost)/NULLIF(c.cost,0),2) AS roi_percent
+FROM campaigns c LEFT JOIN leads l ON l.campaign_id=c.id
+GROUP BY c.id,c.name,c.channel,c.cost ORDER BY c.id;
+--> 1 Campanha laboratorio be3d05 EMAIL 100.00 2 1 300.00 50.00 50.00 200.00
+;

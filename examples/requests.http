@@ -1,0 +1,24 @@
+### Crie uma campanha; copie o id retornado
+POST http://localhost:8082/api/campaigns
+Content-Type: application/json
+
+{"name":"Campanha laboratório","channel":"EMAIL","cost":100.00}
+
+### Crie um lead com campaignId recebido
+POST http://localhost:8082/api/leads
+Content-Type: application/json
+
+{"campaignId":1,"name":"Pessoa Exemplo","email":"pessoa@example.com","phone":"(11) 90000-0001"}
+
+### Repetir a requisição anterior deve retornar 409
+### Consulte os leads
+GET http://localhost:8082/api/leads?campaignId=1
+
+### Converta (substitua 1 pelo id do lead)
+PATCH http://localhost:8082/api/leads/1/conversion
+Content-Type: application/json
+
+{"revenue":300.00}
+
+### Relatório: com uma campanha, um lead e uma conversão, ROI = 200%
+GET http://localhost:8082/api/reports/campaigns

@@ -1,0 +1,20 @@
+POST /api/campaigns -> 201
+POST /api/leads -> 201
+POST /api/leads -> 409
+POST /api/leads -> 201
+PATCH /api/leads/1/conversion -> 200
+PATCH /api/leads/1/conversion -> 409
+GET /api/reports/campaigns -> 200
+{
+  "campaignId": 1,
+  "campaign": "Campanha laboratorio be3d05",
+  "channel": "EMAIL",
+  "leads": 2,
+  "conversions": 1,
+  "conversionRatePercent": 50.0,
+  "cost": 100.0,
+  "revenue": 300.0,
+  "costPerLead": 50.0,
+  "roiPercent": 200.0
+}
+DEMO OK: duplicidade, conversao unica e indicadores conferidos.

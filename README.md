@@ -1,4 +1,13 @@
-# LeadFlow API · Java, Spring Boot & Analytics
+# LeadFlow · Java com interface web
+
+## Interface web · versão 1.1.0
+
+![Tela do LeadFlow](docs/screenshots/desktop.png)
+
+Execute `java -jar target/app.jar` e abra **http://localhost:8082**. Use os formulários e botões para cadastrar e acompanhar seus dados. [Guia da interface e atualização](docs/INTERFACE.md).
+
+O front-end responsivo é embarcado no JAR, sem instalação de Node para o usuário. A automação em **Actions** valida Java e fluxos de navegador e entrega um ZIP Windows com iniciador e checksum. Publicações versionadas ficam disponíveis pelo workflow **Publicar versão**.
+
 
 API para organizar leads de campanhas, evitar duplicidades e calcular indicadores de conversão, custo e retorno.
 
@@ -21,7 +30,7 @@ mvn clean verify
 java -jar target/app.jar
 ```
 
-API: **http://localhost:8082**. Não existe página HTML na raiz. Para ver os indicadores no navegador, abra `http://localhost:8082/api/reports/campaigns`. O banco fica em `data/leadflow.mv.db`.
+API: **http://localhost:8082**. A interface de uso está disponível na raiz `/`. Para ver os indicadores no navegador, abra `http://localhost:8082/api/reports/campaigns`. O banco fica em `data/leadflow.mv.db`.
 
 Com Python 3 instalado, abra outro terminal na mesma pasta e rode:
 
